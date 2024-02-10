@@ -1,0 +1,40 @@
+.footer {
+    color:white;
+    height:300px;
+    background-color: black;
+    
+}
+.footer section{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer section h2{
+    margin-bottom:40px;
+}
+.footer section a{
+    text-decoration: none;
+    color:white;
+}
+.footer section li{
+    list-style: none;
+    font-size:20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.footer section nav:first-child{
+    margin:50px;
+}
+.footer ul{
+    display: flex;
+    justify-content: center;
+}
+.footer ul li{
+    list-style: none;
+    margin-right:40px;
+    background-color: white;
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+}
