@@ -5,7 +5,7 @@ import styles from "@/styles/Home.module.css";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import { MainPage } from "./components/MainPage";
-import { getStaticProps } from "@/utils/notion";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,4 +27,4 @@ export default function Home() {
     </>
   );
 }
-//ISRを追加
+
