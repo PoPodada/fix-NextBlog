@@ -5,14 +5,32 @@ import styles from "@/styles/Home.module.css";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import { MainPage } from "./components/MainPage";
-import getNotionDatabaseData from "./api/NotionArticle";
-
+import {useState,useEffect} from 'react'
 
 const inter = Inter({ subsets: ["latin"] });
-
+interface NotionData{
+  results:{title:string}[]
+}
 export default function Home() {
-  
-  
+  const [data,setdata] = useState<NotionData|null>(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(()=>{
+    fetchData();
+  },[]);
+  const fetchData =async () =>{
+    try{
+      const response = await fetch('api/NotionArticle');
+      if(!response.ok){
+        throw new Error('failed to fetch data');
+      }
+      const jsonData = await response.json();
+      setdata(jsonData);
+      setLoading(false);
+      console.log(jsonData)
+    }catch(error){
+      console.error('error fetching data',error)
+    }
+  }
   return (
     <>
       <Head>
@@ -23,6 +41,15 @@ export default function Home() {
       </Head>
       <Header/>
       <MainPage/>
+      {loading && <p>Loading...</p>} {/* データがロード中の場合の表示 */}
+      {!loading && !data && <p>No data available</p>} {/* データが存在しない場合の表示 */}
+      {!loading && data && (
+        <ul>
+          {data.results.map((item:any,index:any)=>(
+            <li key= {index}>{item.title}</li>
+          ))}
+        </ul>
+      )}
       <Footer/>
       
     </>
