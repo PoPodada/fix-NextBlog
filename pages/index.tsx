@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import { MainPage } from "./components/MainPage";
+import getNotionDatabaseData from "./api/NotionArticle";
 
 
 const inter = Inter({ subsets: ["latin"] });
